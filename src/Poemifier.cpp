@@ -118,7 +118,7 @@ std::string Poemifier::createFontSize() {
     return sizes.grab();
 }
 
-std::string Poemifier::createRandomFont() { return fonts.grab(); }
+std::string Poemifier::createRandomFont() { return fonts.empty() ? "" : fonts.grab(); }
 
 ColorPair Poemifier::createRandomColors() { return colors.grab(); }
 

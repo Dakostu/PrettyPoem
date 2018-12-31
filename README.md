@@ -11,7 +11,7 @@ Thus, every PDFLaTeX document you generate with PrettyPoem is different from the
 ## Build Program
 Simply type "make" in the CLI of the project folder.
 
-This also generates a new folder "settings" that contains the files "fonts" (empty) and "colors" (with some preset colors)
+This also generates a new folder "settings" that contains the files "fonts" (empty) and "colors" (with some preset colors).
 
 ## Run Program
 
@@ -19,7 +19,7 @@ This also generates a new folder "settings" that contains the files "fonts" (emp
 
 Note: The first line in your text file will be automatically parsed as the "title" of your document.
 
-##Custom Fonts & Colors
+## Custom Fonts & Colors
 
 You can add custon fonts and color combinations to the randomization roulette of PrettyPoem.
 

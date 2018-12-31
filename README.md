@@ -17,7 +17,7 @@ This also generates a new folder "settings" that contains the files "fonts" (emp
 
 <code>"./PrettyPoem [text file] [optional: name of latex output file]"</code>
 
-Note: The first line in your text file will be automatically parsed as the "title" of your document.
+Note: The first line in your text file will be automatically parsed as the "title" inside your document.
 
 ## Custom Fonts & Colors
 

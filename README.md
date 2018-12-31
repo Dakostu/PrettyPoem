@@ -19,7 +19,7 @@ This also generates a new folder "settings" that contains the files "fonts" (emp
 
 Note: The first line in your text file will be automatically parsed as the "title" of your document.
 
-# #Custom Fonts & Colors
+##Custom Fonts & Colors
 
 You can add custon fonts and color combinations to the randomization roulette of PrettyPoem.
 
@@ -27,7 +27,7 @@ The "colors" file contains pairs of colors each line.
 The first color denotes the document background color, the second color denotes the text color.
 As of now, only the standard xcolor dvips names are accepted which you can read about [here](https://en.wikibooks.org/wiki/LaTeX/Colors#The_68_standard_colors_known_to_dvips).
 
-*It is important that the colors in a pair should be seperated by a comma!*
+**The colors in a pair must be seperated by a comma!**
 
 The "fonts" file, after a fresh install, is empty. 
 In this file, you can add font package inclusions from which one will be inserted into the generated LaTeX file.

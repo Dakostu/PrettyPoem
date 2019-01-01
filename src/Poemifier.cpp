@@ -64,7 +64,7 @@ void Poemifier::loadColorsFromFile() {
     }
 }
 
-std::string Poemifier::sanitizeInput(char c) {
+std::string Poemifier::sanitizeInput(const char &c) {
     switch (c) {
     case '\\':
         return "\\textbackslash{}";
@@ -99,7 +99,7 @@ std::string Poemifier::sanitizeInput(char c) {
     }
 }
 
-std::string Poemifier::createLatexText(char delimiter) {
+std::string Poemifier::createLatexText(const char &delimiter) {
     char c;
     std::string text;
     

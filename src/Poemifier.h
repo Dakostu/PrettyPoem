@@ -32,8 +32,8 @@ private:
     inline const char* ColorsFile() { return "settings/colors"; };
     void loadFontsFromFile();
     void loadColorsFromFile();
-    std::string sanitizeInput(char c);
-    std::string createLatexText(char delimiter);
+    std::string sanitizeInput(const char &c);
+    std::string createLatexText(const char &delimiter);
     std::string createLatexText();
     std::string createFontSize();
     std::string createRandomFont();

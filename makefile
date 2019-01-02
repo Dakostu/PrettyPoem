@@ -7,23 +7,27 @@ COLORS=White,Black\\nWhite,Red\\nWhite,Magenta\\nBlack,Salmon\\nBlack,SpringGree
 COLORFILENAME=settings/colors
 FONTSFILENAME=settings/fonts
 
-make: $(SRCDIR)/main.o $(SRCDIR)/Poemifier.o 
-	$(CC) $(SRCDIR)/main.o $(SRCDIR)/Poemifier.o $(FLAGS) -o $(BINNAME)
+make: $(SRCDIR)/main.o $(SRCDIR)/InputSanitizer.o $(SRCDIR)/Poemifier.o 
+	$(CC) $(SRCDIR)/main.o $(SRCDIR)/InputSanitizer.o $(SRCDIR)/Poemifier.o $(FLAGS) -o $(BINNAME)
 	
+	#check if settings folder exists
 ifeq (,$(wildcard $(SETDIR)))
 	mkdir $(SETDIR)
-	touch $(FONTSFILENAME)
 endif
 	
+	touch $(FONTSFILENAME)
 	@printf $(COLORS) > $(COLORFILENAME)
 	
-	rm $(SRCDIR)/main.o $(SRCDIR)/Poemifier.o 
+	rm $(SRCDIR)/main.o $(SRCDIR)/Poemifier.o $(SRCDIR)/InputSanitizer.o
+	
+InputSanitizer.o: $(SRCDIR)/InputSanitizer.o 
+	$(CC) $(SRCDIR)/InputSanitizer.o $(FLAGS)
 	
 Poemifier.o: $(SRCDIR)/Poemifier.cpp 
 	$(CC) $(SRCDIR)/Poemifier.cpp $(FLAGS)
-	
+
 main.o: $(SRCDIR)/main.cpp
 	$(CC) $(SRCDIR)/main.cpp $(FLAGS)	
 
 clean:
-	rm $(BINNAME) $(SRCDIR)/main.o $(SRCDIR)/Poemifier.o $(SETDIR)/*
+	rm $(BINNAME) $(SETDIR)/*

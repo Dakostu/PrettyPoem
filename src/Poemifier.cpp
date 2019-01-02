@@ -9,7 +9,6 @@
  * found in the LICENSE file.
  */
 
-#include "GrabBag.h"
 #include "Poemifier.h"
 #include <limits>
 #include <sstream>
@@ -24,7 +23,6 @@ Poemifier::Poemifier(const char* userFileName)
     
     loadFontsFromFile();
     loadColorsFromFile();
-
 }
 
 void Poemifier::loadFontsFromFile() {
@@ -55,7 +53,6 @@ void Poemifier::loadColorsFromFile() {
         while (std::getline(lineStream, color, ',')) {
             tempPair.emplace_back(color);
         }
-
         
         if (tempPair.size() == 2) {
             colors.insert(tempPair);
@@ -64,40 +61,6 @@ void Poemifier::loadColorsFromFile() {
     }
 }
 
-std::string Poemifier::sanitizeInput(const char &c) {
-    switch (c) {
-    case '\\':
-        return "\\textbackslash{}";
-    case '\n':
-        return "\\ \n\n";
-    case '<':
-        return "$<$";
-    case '>':
-        return "$>$";
-    case '{':
-        return "\\{";
-    case '}':
-        return "\\}";
-    case '$':
-        return "\\$";
-    case '&':
-        return "\\&";
-    case '#':
-        return "\\#";
-    case '^':
-        return "\\textasciicircum";
-    case '-':
-        return "--";
-    case '_':
-        return "\\_";
-    case '~':
-        return "\\textasciitilde";
-    case '%':
-        return "\\%";
-    default:
-        return std::string(1, c);
-    }
-}
 
 std::string Poemifier::createLatexText(const char &delimiter) {
     char c;
@@ -105,7 +68,7 @@ std::string Poemifier::createLatexText(const char &delimiter) {
     
     while ((c = userTextFile.get()) != delimiter
             && !userTextFile.eof()) {
-        text += sanitizeInput(c);
+        text += sanitizer.sanitizeInput(c);
     }
     
     return text;
@@ -122,7 +85,7 @@ std::string Poemifier::createRandomFont() { return fonts.empty() ? "" : fonts.gr
 
 ColorPair Poemifier::createRandomColors() { return colors.grab(); }
 
-std::string Poemifier::createRandomJustify() {    
+std::string Poemifier::createRandomJustification() {    
     GrabBag<std::string> justifications({"\\centering\n","\\raggedleft\n",""});
     return justifications.grab();
 }
@@ -134,7 +97,7 @@ std::string Poemifier::addPreamble() {
     
     ColorPair chosenColors = createRandomColors();
     std::string colors = "\\pagecolor{" + chosenColors.at(0) + "} \n\\color{" + chosenColors.at(1) + "}";
-    std::string justify = createRandomJustify();
+    std::string justify = createRandomJustification();
     
     return (preambleFirst + font + preambleSecond + colors + justify);
 }

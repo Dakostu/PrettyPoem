@@ -9,10 +9,10 @@
  * found in the LICENSE file.
  */
 
- 
 #ifndef POEMIFIER_H
 #define POEMIFIER_H
 
+#include "InputSanitizer.h"
 #include "GrabBag.h"
 #include <fstream>
 #include <string>
@@ -27,17 +27,17 @@ private:
     std::ifstream userTextFile;
     GrabBag<ColorPair> colors;
     GrabBag<std::string> fonts;
+    InputSanitizer sanitizer;
 
     inline const char* FontsFile() { return "settings/fonts"; };
     inline const char* ColorsFile() { return "settings/colors"; };
     void loadFontsFromFile();
     void loadColorsFromFile();
-    std::string sanitizeInput(const char &c);
     std::string createLatexText(const char &delimiter);
     std::string createLatexText();
     std::string createFontSize();
     std::string createRandomFont();
-    std::string createRandomJustify();
+    std::string createRandomJustification();
     ColorPair createRandomColors();
     std::string addPreamble();
     std::string addPoemTitle();

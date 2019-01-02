@@ -30,4 +30,4 @@ main.o: $(SRCDIR)/main.cpp
 	$(CC) $(SRCDIR)/main.cpp $(FLAGS)	
 
 clean:
-	rm $(BINNAME) $(SETDIR)/*
+	rm $(BINNAME) $(SETDIR)/fonts $(SETDIR)/colors
